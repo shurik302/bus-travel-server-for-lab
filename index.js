@@ -13,12 +13,15 @@ const cityRoutes = require('./router/cityRoutes');
 const PORT = process.env.PORT || 5000;
 const app = express();
 
+const corsOptions = {
+  origin: 'https://bus-travel-transfer.netlify.app', // Разрешаем только запросы с твоего фронтенда
+  credentials: true,
+  optionsSuccessStatus: 200 // Для поддержки старых браузеров
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors({
-  credentials: true,
-  origin: ['http://localhost:3000', 'http://localhost:3001'], // Разрешение запросов из нескольких источников
-}));
 
 app.use("/api", router);
 app.use('/api', ticketsRouter);
