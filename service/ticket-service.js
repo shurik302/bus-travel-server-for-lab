@@ -38,9 +38,9 @@ class TicketService {
     }
 
     const formatDate = (date, time) => {
-      const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', timeZone: 'Europe/Kiev' };
+      const options = { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'Europe/Kiev' };
       const formattedDate = new Date(date).toLocaleDateString(ticketData.language === 'ua' ? 'uk-UA' : 'en-US', options);
-      return time === '03:00' ? formattedDate : `${formattedDate} о ${time}`;
+      return `${formattedDate} о ${time}`;
     };
 
     // Select price based on user's language
