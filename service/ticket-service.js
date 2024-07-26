@@ -40,14 +40,7 @@ class TicketService {
     const formatDate = (date, time) => {
       const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', timeZone: 'Europe/Kiev' };
       const formattedDate = new Date(date).toLocaleDateString(ticketData.language === 'ua' ? 'uk-UA' : 'en-US', options);
-      return `${formattedDate} о ${time}`;
-    };
-
-    const formatTime = (time) => {
-      if (time === '03:00') {
-        return '';
-      }
-      return `о ${time}`;
+      return time === '03:00' ? formattedDate : `${formattedDate} о ${time}`;
     };
 
     // Select price based on user's language
@@ -93,9 +86,9 @@ class TicketService {
         <td style="border: 1px solid black; padding: 10px;">
           <div style="padding-top: 10px;">
             <span style="font-size: 20px; font-weight: 400;">Дата та час відправлення:
-              ${formatDate(ticketData.date_departure, ticketData.departure)} ${formatTime(ticketData.departure)}</span><br />
+              ${formatDate(ticketData.date_departure, ticketData.departure)}</span><br />
             <span style="font-size: 20px; font-weight: 400;">Дата та час прибуття: ${formatDate(ticketData.date_arrival,
-          ticketData.arrival)} ${formatTime(ticketData.arrival)}</span><br />
+          ticketData.arrival)}</span><br />
             <span style="font-size: 20px; font-weight: 400;">Ціна квитка: ${price} ${currency}</span><br />
             <span style="font-size: 20px; font-weight: 400;">Кількість пасажирів: ${ticketData.passengers}</span>
           </div>
