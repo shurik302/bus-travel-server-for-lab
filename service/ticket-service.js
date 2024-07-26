@@ -43,6 +43,13 @@ class TicketService {
       return `${formattedDate} о ${time}`;
     };
 
+    const formatTime = (time) => {
+      if (time === '03:00') {
+        return '';
+      }
+      return `о ${time}`;
+    };
+
     // Select price based on user's language
     const price = ticketData.language === 'ua' ? ticketData.priceUA : ticketData.priceEN;
     const currency = ticketData.language === 'ua' ? 'грн' : '$';
@@ -86,9 +93,9 @@ class TicketService {
         <td style="border: 1px solid black; padding: 10px;">
           <div style="padding-top: 10px;">
             <span style="font-size: 20px; font-weight: 400;">Дата та час відправлення:
-              ${formatDate(ticketData.date_departure, ticketData.departure)}</span><br />
+              ${formatDate(ticketData.date_departure, ticketData.departure)} ${formatTime(ticketData.departure)}</span><br />
             <span style="font-size: 20px; font-weight: 400;">Дата та час прибуття: ${formatDate(ticketData.date_arrival,
-          ticketData.arrival)}</span><br />
+          ticketData.arrival)} ${formatTime(ticketData.arrival)}</span><br />
             <span style="font-size: 20px; font-weight: 400;">Ціна квитка: ${price} ${currency}</span><br />
             <span style="font-size: 20px; font-weight: 400;">Кількість пасажирів: ${ticketData.passengers}</span>
           </div>
