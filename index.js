@@ -29,6 +29,10 @@ app.use('/api/payment', paymentRouter);
 app.use('/api/flights', flightRoutes);
 app.use('/api', cityRoutes);
 app.use(errorMiddleware);
+app.get('/api/endpoint', (req, res) => {
+  res.json({ message: 'Endpoint works!' });
+});
+
 
 const start = async () => {
   try {
