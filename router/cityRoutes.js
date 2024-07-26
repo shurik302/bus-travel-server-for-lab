@@ -28,7 +28,7 @@ const verifyToken = async (req, res, next) => {
   }
 };
 
-router.get('/cities', verifyToken, async (req, res) => {
+router.get('/cities', async (req, res) => {
   try {
     console.log('Fetching cities...');
     const cities = await City.find();
