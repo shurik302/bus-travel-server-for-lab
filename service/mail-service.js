@@ -34,7 +34,7 @@ class MailService {
       await this.transporter.sendMail({
         from: process.env.SMTP_USER,
         to: to,
-        subject: `Активація акаунту на сайті ${process.env.API_URL}`,
+        subject: `Активація акаунту на сайті ${process.env.CLIENT_URL}`,
         text: "",
         html: `<div style="font-family: 'Open Sans', sans-serif;">
           <div style="text-align: center; padding: 20px; background-color: #1e92ff;">
