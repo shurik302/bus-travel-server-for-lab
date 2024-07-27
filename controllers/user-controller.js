@@ -57,7 +57,7 @@ class UserController {
       console.log('Activation complete for user:', user.id);
   
       // Виконати редирект на клієнтську частину після успішної активації
-      const redirectUrl = `${process.env.CLIENT_URL}/activation-success?token=${tokens.accessToken}`;
+      const redirectUrl = `${process.env.CLIENT_URL}`;
       res.redirect(302, redirectUrl);
     } catch (e) {
       console.error(`Activation error: ${e.message}`);
