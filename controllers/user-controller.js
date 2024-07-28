@@ -56,14 +56,21 @@ class UserController {
   
       console.log('Activation complete for user:', user.id);
   
-      // Виконати редирект на клієнтську частину після успішної активації
-      const redirectUrl = `${process.env.CLIENT_URL}`;
-      res.redirect(302, redirectUrl);
+      const redirectUrl = process.env.CLIENT_URL;
+      console.log('Redirect URL:', redirectUrl);
+  
+      // res.redirect(302, redirectUrl); // закомментировано для тестирования
+      res.status(200).json({
+        message: 'Акаунт успішно активовано. Перейдіть на сайт за посиланням.',
+        redirectUrl: redirectUrl
+      });
+  
     } catch (e) {
       console.error(`Activation error: ${e.message}`);
       next(e);
     }
   }
+  
 
   async refresh(req, res, next) {
     try {
