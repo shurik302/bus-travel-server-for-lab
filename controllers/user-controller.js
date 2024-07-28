@@ -56,7 +56,7 @@ class UserController {
   
       console.log('Activation complete for user:', user.id);
   
-      const redirectUrl = process.env.CLIENT_URL;
+      const redirectUrl = "https://bus-travel-transfer.netlify.app/";
       console.log('Redirect URL:', redirectUrl);
   
       // res.redirect(302, redirectUrl); // закомментировано для тестирования
