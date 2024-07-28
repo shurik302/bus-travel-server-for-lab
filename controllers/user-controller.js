@@ -59,11 +59,11 @@ class UserController {
       const redirectUrl = "https://bus-travel-transfer.netlify.app/";
       console.log('Redirect URL:', redirectUrl);
   
-      // res.redirect(302, redirectUrl); // закомментировано для тестирования
-      res.status(200).json({
+       res.redirect(302, redirectUrl);
+      /* res.status(200).json({
         message: 'Акаунт успішно активовано. Перейдіть на сайт за посиланням.',
         redirectUrl: redirectUrl
-      });
+      }); */
   
     } catch (e) {
       console.error(`Activation error: ${e.message}`);
