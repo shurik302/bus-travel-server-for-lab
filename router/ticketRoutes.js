@@ -71,15 +71,7 @@ router.post('/tickets', verifyToken, async (req, res) => {
     const ticket = new Ticket(ticketData);
     await ticket.save();
 
-      // Генеруємо токен для QR-коду
-      const qrCodeToken = ticketService.generateQRCodeToken(ticket._id, userId);
-
-      // Створюємо URL для QR-коду
-      const qrCodeLink = `${process.env.CLIENT_URL}/qrcode/${qrCodeToken}`;
-  
-      // Відправляємо email з квитком
-      await ticketService.sendTicketMail(email, ticketData, qrCodeLink);
-      res.status(201).json(ticket);
+    res.status(201).json(ticket);
   } catch (error) {
     console.error('Error creating ticket:', error);
     res.status(500).json({ message: 'Error creating ticket', error: error.message });
@@ -194,20 +186,37 @@ router.get('/qrcode/:token', async (req, res) => {
   }
 });
 
-// Маршрут для активації/деактивації квитка
-router.put('/tickets/toggle/:id', async (req, res) => {
+// Оновлення статусу квитка та відправка email
+router.put('/tickets/toggle/:id', verifyToken, async (req, res) => {
   try {
     const ticket = await Ticket.findById(req.params.id);
     if (!ticket) {
-      return res.status(404).send('Ticket not found');
+      return res.status(404).json({ message: 'Ticket not found' });
     }
 
     ticket.isActive = !ticket.isActive;
-    await ticket.save();
 
-    res.status(200).send(ticket);
+    if (ticket.isActive && !ticket.emailSent) {
+      const userId = ticket.user.toString();
+
+      // Генеруємо токен для QR-коду
+      const qrCodeToken = ticketService.generateQRCodeToken(ticket._id, userId);
+
+      // Створюємо URL для QR-коду
+      const qrCodeLink = `${process.env.CLIENT_URL}/qrcode/${qrCodeToken}`;
+
+      // Відправляємо email з квитком
+      await ticketService.sendTicketMail(ticket.email, ticket, qrCodeLink);
+
+      // Оновлюємо поле emailSent
+      ticket.emailSent = true;
+    }
+
+    await ticket.save();
+    res.status(200).json(ticket);
   } catch (error) {
-    res.status(500).send('Error toggling ticket status: ' + error.message);
+    console.error('Error toggling ticket status:', error);
+    res.status(500).json({ message: 'Error toggling ticket status', error: error.message });
   }
 });
 

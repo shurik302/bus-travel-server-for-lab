@@ -24,6 +24,7 @@ const ticketSchema = new mongoose.Schema({
   firstName: String,
   lastName: String,
   isActive: { type: Boolean, default: false },
+  emailSent: { type: Boolean, default: false },
   user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
 });
 
