@@ -21,19 +21,37 @@ class UserController {
 
   async getUserRole(req, res, next) {
     try {
-      const accessToken = req.headers.authorization.split(' ')[1];
-      if (!accessToken) {
-        return res.status(401).json({ message: 'Unauthorized' });
-      }
-      
-      const userData = tokenService.validateAccessToken(accessToken);
-      if (!userData) {
+      console.log('Received request to get user role');
+      const authHeader = req.headers.authorization;
+      if (!authHeader) {
+        console.log('No Authorization header');
         return res.status(401).json({ message: 'Unauthorized' });
       }
 
+      const accessToken = authHeader.split(' ')[1];
+      if (!accessToken) {
+        console.log('No access token');
+        return res.status(401).json({ message: 'Unauthorized' });
+      }
+
+      console.log('Access token:', accessToken);
+      const userData = tokenService.validateAccessToken(accessToken);
+      if (!userData) {
+        console.log('Invalid access token');
+        return res.status(401).json({ message: 'Unauthorized' });
+      }
+
+      console.log('User data from token:', userData);
       const user = await userService.getUserById(userData.id);
+      if (!user) {
+        console.log('User not found');
+        return res.status(404).json({ message: 'User not found' });
+      }
+
+      console.log('User role:', user.role);
       return res.json({ role: user.role });
     } catch (e) {
+      console.error('Error in getUserRole:', e);
       next(e);
     }
   }
