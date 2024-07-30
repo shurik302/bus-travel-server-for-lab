@@ -35,6 +35,10 @@ class UserService {
     }
   }
 
+  async getUserById(id) {
+    return UserModel.findById(id);
+  }
+
   async getUsers() {
     const users = await UserModel.find();
     return users;

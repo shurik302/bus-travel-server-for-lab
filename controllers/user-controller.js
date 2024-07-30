@@ -19,6 +19,25 @@ class UserController {
     }
   }
 
+  async getUserRole(req, res, next) {
+    try {
+      const accessToken = req.headers.authorization.split(' ')[1];
+      if (!accessToken) {
+        return res.status(401).json({ message: 'Unauthorized' });
+      }
+      
+      const userData = tokenService.validateAccessToken(accessToken);
+      if (!userData) {
+        return res.status(401).json({ message: 'Unauthorized' });
+      }
+
+      const user = await userService.getUserById(userData.id);
+      return res.json({ role: user.role });
+    } catch (e) {
+      next(e);
+    }
+  }
+
   async login(req, res, next) {
     try {
       const { email, password } = req.body;
