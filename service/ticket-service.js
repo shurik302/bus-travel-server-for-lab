@@ -57,7 +57,7 @@ class TicketService {
          <table width=100% cellpadding="0" cellspacing="0" border="0" style="background-color: #f2f2f2;">
     <tr>
       <td align="center" style="padding: 20px;">
-        <table width="600" cellpadding="0" cellspacing="0" border="0" style="background-color: #ffffff; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+        <table width=100% cellpadding="0" cellspacing="0" border="0" style="background-color: #ffffff; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
           <tr>
             <td style="padding: 20px; font-family: 'Open Sans', sans-serif;">
               <h1 style="font-size: 30px; font-weight: 500; margin: 0;">Доброго дня, ${ticketData.firstName} ${ticketData.lastName}, Вас вітає
