@@ -18,7 +18,6 @@ class UserService {
       const activationLink = uuidv4();
       const user = await UserModel.create({ email, password: hashPassword, activationLink });
 
-      // Відправлення листа активації
       const activationEmailLink = `${process.env.API_URL}api/activate/${activationLink}`;
       await mailService.sendActivationMail(email, activationEmailLink);
 
