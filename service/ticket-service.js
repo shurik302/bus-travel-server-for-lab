@@ -94,7 +94,7 @@ class TicketService {
             </td>
           </tr>
           <tr>
-            <td style="padding: 10px; border: 1px solid black;  border-top: none; font-size: 14px; font-weight: 300;">
+            <td style="padding: 10px; border: 1px solid black; font-size: 14px; font-weight: 300;">
               <p style="margin: 0; ">Цей квиток є дійсним документом, який підтверджує ваше право на проїзд з пункту відправлення до пункту призначення, зазначених у квитку. При наданні цього квитка водію, пасажир, на ім'я якого було придбано квиток, має право на проїзд. Квиток дійсний протягом всієї поїздки. Дякуємо за вибір <span style="font-size: 14px; font-weight: 400; color:#2356ff;">Bustravel!</span></p>
             </td>
           </tr>
@@ -131,7 +131,7 @@ class TicketService {
             </td>
           </tr>
           <tr>
-            <td style="padding: 10px; border: 1px solid black;  border-top: none; font-size: 14px; font-weight: 300;">
+            <td style="padding: 10px; border: 1px solid black; font-size: 14px; font-weight: 300;">
               <p style="margin: 0;">This ticket is a valid document that confirms your right to travel from the point of departure to the destination indicated on the ticket. When presenting this ticket to the driver, the passenger in whose name the ticket was purchased is entitled to travel. The ticket is valid for the entire trip. Thank you for choosing <span style="font-size: 14px; font-weight: 400; color:#2356ff;">Bustravel!</span></p>
             </td>
           </tr>
