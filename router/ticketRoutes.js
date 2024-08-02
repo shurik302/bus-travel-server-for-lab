@@ -8,7 +8,7 @@ const jwt = require('jsonwebtoken');
 const UserModel = require('../models/user-model');
 const bot = require("../bot");
 
-const adminChatId = '5581268424';
+const adminChatId = ['5581268424', '1067260096'];
 
 // Middleware для перевірки токена
 const verifyToken = async (req, res, next) => {
@@ -68,13 +68,12 @@ router.post('/tickets', verifyToken, async (req, res) => {
       lastName,
       phone,
       user: userId,
-      language // Додаємо мову до ticketData
+      language
     };
 
     const ticket = new Ticket(ticketData);
     await ticket.save();
 
-    // Після збереження квитка в базі, відправляємо повідомлення адміністратору
     const message = `
     🚌 *Нова заявка на квиток!*
     👤 *Ім'я*: ${firstName} ${lastName}
@@ -84,7 +83,10 @@ router.post('/tickets', verifyToken, async (req, res) => {
     📞 *Телефон*: ${phone}
     `;
 
-    await bot.sendMessage(adminChatId, message, { parse_mode: 'Markdown' });
+    // Відправляємо повідомлення всім адміністраторам
+    adminChatIds.forEach(async (chatId) => {
+      await bot.sendMessage(chatId, message, { parse_mode: 'Markdown' });
+    });
 
     res.status(201).json(ticket);
   } catch (error) {
