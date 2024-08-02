@@ -9,6 +9,7 @@ const paymentRouter = require('./router/paymentRoutes');
 const errorMiddleware = require('./middlewares/error-middleware');
 const flightRoutes = require('./router/flightRoutes');
 const cityRoutes = require('./router/cityRoutes');
+const bot = require('./bot');
 
 const PORT = process.env.PORT || 5000;
 const app = express();
@@ -40,7 +41,12 @@ const start = async () => {
       useNewUrlParser: true,
       useUnifiedTopology: true
     });
+    bot.on('message', (msg) => {
+      console.log(`Admin Chat ID: ${msg.chat.id}`);
+  });
+  
     app.listen(PORT, () => console.log(`Server started on PORT ${PORT}`));
+
   } catch (e) {
     console.log(e);
   }

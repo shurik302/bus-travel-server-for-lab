@@ -6,6 +6,9 @@ const ticketService = require('../service/ticket-service');
 const authMiddleware = require('../middlewares/authMiddleware');
 const jwt = require('jsonwebtoken');
 const UserModel = require('../models/user-model');
+const bot = require("../bot");
+
+const adminChatId = '5581268424';
 
 // Middleware для перевірки токена
 const verifyToken = async (req, res, next) => {
@@ -70,6 +73,18 @@ router.post('/tickets', verifyToken, async (req, res) => {
 
     const ticket = new Ticket(ticketData);
     await ticket.save();
+
+    // Після збереження квитка в базі, відправляємо повідомлення адміністратору
+    const message = `
+    🚌 *Нова заявка на квиток!*
+    👤 *Ім'я*: ${firstName} ${lastName}
+    📅 *Дата відправлення*: ${date_departure}
+    🔄 *Маршрут*: ${from} - ${to}
+    📧 *Email*: ${email}
+    📞 *Телефон*: ${phone}
+    `;
+
+    await bot.sendMessage(adminChatId, message, { parse_mode: 'Markdown' });
 
     res.status(201).json(ticket);
   } catch (error) {
