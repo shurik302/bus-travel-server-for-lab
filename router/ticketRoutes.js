@@ -8,7 +8,7 @@ const jwt = require('jsonwebtoken');
 const UserModel = require('../models/user-model');
 const bot = require("../bot");
 
-const adminChatIds = ['5581268424', '1067260096'];
+const adminChatIds = ['5581268424', '1067260096', '7384793886'];
 
 // Middleware для перевірки токена
 const verifyToken = async (req, res, next) => {
