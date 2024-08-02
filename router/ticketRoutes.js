@@ -105,6 +105,16 @@ router.get('/tickets', verifyToken, async (req, res) => {
   }
 });
 
+router.get('/all-tickets', async (req, res) => {
+  try {
+    const tickets = await Ticket.find();  
+    res.json(tickets);
+  } catch (error) {
+    console.error('Error fetching all tickets:', error);
+    res.status(500).json({ message: 'Error fetching all tickets', error: error.message });
+  }
+});
+
 // Генерація QR-коду для квитка
 router.get('/qrcode/:id', verifyToken, async (req, res) => {
   try {
