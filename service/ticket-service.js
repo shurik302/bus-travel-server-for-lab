@@ -100,7 +100,7 @@ class TicketService {
           </tr>
           <tr>
             <td style="padding: 20px; font-family: 'Open Sans', sans-serif;">
-              <h1 style="font-size: 30px; font-weight: 500; margin-top: 80px;">Hello, ${ticketData.firstName} ${ticketData.lastName}, <span style="font-size: 30px; font-weight: 600; color:#2356ff;">Bustravel!</span> welcomes you!</h1>
+              <h1 style="font-size: 30px; font-weight: 500; margin-top: 80px;">Hello, ${ticketData.firstName} ${ticketData.lastName}, <span style="font-size: 30px; font-weight: 600; color:#2356ff;">Bustravel</span> welcomes you!</h1>
               <p style="font-size: 20px; font-weight: 400; margin: 0;">We are happy to inform you that your ticket was purchased successfully!</p>
               <p style="font-size: 20px; font-weight: 400; margin: 0;">Details of the trip in English</p>
             </td>

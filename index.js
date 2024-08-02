@@ -14,7 +14,7 @@ const PORT = process.env.PORT || 5000;
 const app = express();
 
 const corsOptions = {
-  origin: 'https://bus-travel-transfer.netlify.app', // Разрешаем только запросы с твоего фронтенда
+  origin: 'https://bus-travels.netlify.app/', // Разрешаем только запросы с твоего фронтенда
   credentials: true,
   optionsSuccessStatus: 200 // Для поддержки старых браузеров
 };
