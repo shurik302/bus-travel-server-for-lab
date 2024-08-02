@@ -81,7 +81,7 @@ class UserController {
   
       console.log('Activation complete for user:', user.id);
   
-      const redirectUrl = "https://bus-travels.netlify.app";
+      const redirectUrl = "https://bus-travels.netlify.app/";
       console.log('Redirect URL:', redirectUrl);
   
        res.redirect(302, redirectUrl);
