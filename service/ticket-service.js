@@ -118,7 +118,9 @@ class TicketService {
                 <tr>
                   <td style="padding: 10px; font-size: 20px; font-weight: 400;">
                     <p style="margin: 0;">Where from: ${ticketData.from}</p>
+                    <p style="margin: 0;">${ticketData.fromLocation}</p>
                     <p style="margin: 0;">Where arriving: ${ticketData.to}</p>
+                    <p style="margin: 0;">${ticketData.toLocation}</p>
                   </td>
                   <td style="padding: 10px; font-size: 20px; font-weight: 400;">
                     <p style="margin: 0;">Date and time of departure: ${formatDate(ticketData.date_departure, ticketData.departure)}</p>
