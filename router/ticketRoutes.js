@@ -81,7 +81,7 @@ router.post('/tickets', verifyToken, async (req, res) => {
     🔄 *Маршрут*: ${from} - ${to}
     📧 *Email*: ${email}
     📞 *Телефон*: ${phone}
-    💸 *Ціна*: ${priceUA}
+    💸 *Ціна*: ${priceUA}₴
     🧑‍🤝‍🧑 *Кількість пасажирів*: ${passengers}
     `;
 
