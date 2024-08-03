@@ -79,7 +79,9 @@ class TicketService {
                 <tr>
                   <td style="padding: 10px; font-size: 20px; font-weight: 400;">
                     <p style="margin: 0;">Звідки: ${ticketData.from}</p>
+                    <p style="margin: 0;">${ticketData.fromLocation}</p>
                     <p style="margin: 0;">Куди: ${ticketData.to}</p>
+                    <p style="margin: 0;">${ticketData.toLocation}</p>
                   </td>
                   <td style="padding: 10px; font-size: 20px; font-weight: 400;">
                     <p style="margin: 0;">Дата та час відправлення: ${formatDate(ticketData.date_departure, ticketData.departure)}</p>
