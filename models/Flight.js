@@ -15,16 +15,16 @@ const FlightSchema = new Schema({
   passengers: { type: String, required: true },
   priceEN: { type: Number, required: true },
   priceUA: { type: Number, required: true },
-  date_departure: { type: Date, required: true }, // Змінено на тип Date
+  date_departure: { type: Date, required: true },
   departure: { type: String, required: true },
   duration: { type: Number, required: true },
-  date_arrival: { type: Date, required: true }, // Змінено на тип Date
+  date_arrival: { type: Date, required: true },
   arrival: { type: String, required: true },
   baggage: {
     smallBaggage: { type: Number },
-    largeBaggage: { type: Number}
+    largeBaggage: { type: Number }
   },
+  isDaily: { type: Boolean, default: false }  // Новое поле для ежедневных поездок
 });
 
 module.exports = mongoose.model('Flight', FlightSchema);
-

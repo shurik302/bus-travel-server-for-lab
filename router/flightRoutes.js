@@ -24,7 +24,8 @@ router.post('/create', async (req, res) => {
       duration,
       date_arrival,
       arrival,
-      baggage
+      baggage,
+      isDaily  // Новое поле
     } = req.body;
 
     const flight = new Flight({
@@ -46,7 +47,8 @@ router.post('/create', async (req, res) => {
       duration,
       date_arrival: new Date(date_arrival),
       arrival,
-      baggage
+      baggage,
+      isDaily  // Сохранение значения ежедневной поездки
     });
 
     await flight.save();
@@ -59,10 +61,10 @@ router.post('/create', async (req, res) => {
 
 router.get('/', async (req, res) => {
   try {
-    // Отримуємо поточну дату
+    // Получаем текущую дату
     const currentDate = moment().startOf('day');
 
-    // Знаходимо всі квитки з датою вильоту пізніше поточної дати
+    // Находим все рейсы с датой вылета позже текущей даты
     const flights = await Flight.find({
       date_departure: { $gte: currentDate.toDate() }
     });
