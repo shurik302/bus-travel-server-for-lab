@@ -127,7 +127,7 @@ class TicketService {
                     <p style="margin: 0;">Date and time of arrival: ${formatDate(ticketData.date_arrival, ticketData.arrival)}</p>
                   </td>
                   <td style="padding: 10px; font-size: 20px; font-weight: 400;">
-                    <p style="margin: 0;">Ticket price: ${ticketData.priceEN} грн.</p>
+                    <p style="margin: 0;">Ticket price: ${ticketData.priceEN}€</p>
                     <p style="margin: 0;">The number of passengers: ${ticketData.passengers}</p>
                   </td>
                 </tr>
