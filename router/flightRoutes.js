@@ -61,18 +61,13 @@ router.post('/create', async (req, res) => {
 
 router.get('/', async (req, res) => {
   try {
-    // Получаем текущую дату
-    const currentDate = moment().startOf('day');
-
-    // Находим все рейсы с датой вылета позже текущей даты
-    const flights = await Flight.find({
-      date_departure: { $gte: currentDate.toDate() }
-    });
+    const flights = await Flight.find({});
 
     res.status(200).json(flights);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 });
+
 
 module.exports = router;
